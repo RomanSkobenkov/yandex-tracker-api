@@ -1,3 +1,4 @@
 # yandex-tracker-api
 
-Эй, packagist, где мой readme.md?
+https://packagist.org/packages/yandex-tracker-api/yandex-tracker-api
+composer require yandex-tracker-api/yandex-tracker-api
