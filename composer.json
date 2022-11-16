@@ -1,0 +1,11 @@
+{
+    "name": "yandex-tracker-api/yandex-tracker-api",
+    "description": "Yandex Tracker API",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "YandexTrackerApi\\YandexTrackerApi\\": "src/"
+        }
+    },
+    "require": {}
+}
