@@ -1,6 +1,6 @@
 <?php
 
-namespace YandexTrackerApi\YandexTrackerApi;
+namespace YandexTrackerApi;
 
 class YandexTrackerClient
 {
