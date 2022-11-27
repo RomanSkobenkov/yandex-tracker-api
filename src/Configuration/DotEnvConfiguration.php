@@ -11,7 +11,7 @@ class DotEnvConfiguration extends AbstractConfiguration
     {
         $this->loadDotEnv($path);
 
-        $this->oauthAccessToken = $this->env('YANDEX_TRACKER_OAUTH');
+        $this->oauthAccessToken = 'OAuth ' . $this->env('YANDEX_TRACKER_OAUTH');
         $this->companyId = $this->env('YANDEX_TRACKER_COMPANY_ID');
     }
 

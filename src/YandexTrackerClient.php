@@ -60,7 +60,49 @@ class YandexTrackerClient
 
         $this->jsonOptions = JSON_UNESCAPED_UNICODE;
 
+    }
 
+    /**
+     * Execute REST request.
+     *
+     * @param string            $context        Rest API context (ex.:issue, search, etc..)
+     * @param array|string|null $post_data
+     *
+     * @return string|bool
+     */
+    public function exec(string $context, array|string $post_data = null, string $custom_request = null): string|bool
+    {
+        $response = $this->guzzle->request('GET', $context, [
+            'headers' => [
+                'Authorization'     => $this->configuration->getOAuthAccessToken(),
+                'X-Org-ID'      => $this->configuration->getCompanyId(),
+            ]
+        ]);
+
+        return $response->getBody()->getContents();
+    }
+
+    /**
+     * convert to query array to http query parameter.
+     */
+    public function toHttpQueryParameter(array $paramArray): string
+    {
+        $queryParam = '?';
+
+        foreach ($paramArray as $key => $value) {
+            $v = null;
+
+            // some param field(Ex: expand) type is array.
+            if (is_array($value)) {
+                $v = implode(',', $value);
+            } else {
+                $v = $value;
+            }
+
+            $queryParam .= rawurlencode($key).'='.rawurlencode($v).'&';
+        }
+
+        return $queryParam;
     }
 
 }
