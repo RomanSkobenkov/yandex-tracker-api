@@ -1,6 +1,6 @@
 <?php
 
-namespace YandexTrackerApi\Issue;
+namespace YandexTrackerApi\YandexTrackerApi\Issue;
 
 class Issue implements \JsonSerializable
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace YandexTrackerApi\Issue;
+namespace YandexTrackerApi\YandexTrackerApi\Issue;
 
 use ArrayObject;
-use YandexTrackerApi\YandexTrackerClient;
+use YandexTrackerApi\YandexTrackerApi\YandexTrackerClient;
 
 class IssueService extends YandexTrackerClient
 {
