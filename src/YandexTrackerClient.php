@@ -2,8 +2,10 @@
 
 namespace YandexTrackerApi\YandexTrackerApi;
 
+use GuzzleHttp\Client as GuzzleClient;
 use Psr\Log\LoggerInterface;
 use YandexTrackerApi\YandexTrackerApi\Configuration\ConfigurationInterface;
+use YandexTrackerApi\YandexTrackerApi\Configuration\DotEnvConfiguration;
 
 class YandexTrackerClient
 {
@@ -39,6 +41,25 @@ class YandexTrackerClient
 
     public function __construct(ConfigurationInterface $configuration = null, LoggerInterface $logger = null, string $path = './')
     {
+        if ($configuration === null) {
+            if (!file_exists($path.'.env')) {
+                // If calling the getcwd() on laravel it will return the 'public' directory.
+                $path = '../';
+            }
+            $this->configuration = new DotEnvConfiguration($path);
+        } else {
+            $this->configuration = $configuration;
+        }
+
+        $this->json_mapper = new \JsonMapper();
+
+        // TODO: logger бы завести
+
+        // TODO: Guzzle prepare
+        $this->guzzle = new GuzzleClient(['base_uri' => $this->api_uri]);
+
+        $this->jsonOptions = JSON_UNESCAPED_UNICODE;
+
 
     }
 
