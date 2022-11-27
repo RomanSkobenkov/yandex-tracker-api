@@ -17,7 +17,7 @@ class YandexTrackerClient
     /**
      * Yandex Tracker REST API URI.
      */
-    private string $api_uri = 'https://api.tracker.yandex.net';
+    private string $api_uri = 'https://api.tracker.yandex.net/v2';
 
     /**
      * Guzzle instance.
