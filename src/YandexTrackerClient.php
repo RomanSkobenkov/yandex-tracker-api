@@ -3,6 +3,7 @@
 namespace YandexTrackerApi\YandexTrackerApi;
 
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\Log\LoggerInterface;
 use YandexTrackerApi\YandexTrackerApi\Configuration\ConfigurationInterface;
 use YandexTrackerApi\YandexTrackerApi\Configuration\DotEnvConfiguration;
@@ -65,14 +66,15 @@ class YandexTrackerClient
     /**
      * Execute REST request.
      *
-     * @param string            $context        Rest API context (ex.:issue, search, etc..)
+     * @param string $context Rest API context (ex.:issue, search, etc..)
      * @param array|string|null $post_data
-     *
+     * @param string $method
      * @return string|bool
+     * @throws GuzzleException
      */
-    public function exec(string $context, array|string $post_data = null, string $custom_request = null): string|bool
+    public function exec(string $context, array|string $post_data = null, string $method = 'GET'): string|bool
     {
-        $response = $this->guzzle->request('GET', $this->api_uri . $context, [
+        $response = $this->guzzle->request($method, $this->api_uri . $context, [
             'headers' => [
                 'Authorization'     => $this->configuration->getOAuthAccessToken(),
                 'X-Org-ID'      => $this->configuration->getCompanyId(),

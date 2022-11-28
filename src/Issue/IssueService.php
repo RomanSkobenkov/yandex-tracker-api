@@ -26,14 +26,14 @@ class IssueService extends YandexTrackerClient
     }
 
     /**
-     *  get all project list.
+     *  get all Issue list.
      *
      * @param int|string $issueIdOrKey
      * @param array $paramArray   Query Parameter key-value Array.
      * @param Issue|null $issueObject
      *
-     * @return Issue class
-     *@throws JsonMapper_Exception
+     * @return Issue
+     * @throws JsonMapper_Exception
      *
      */
     public function get(int|string $issueIdOrKey, array $paramArray = [], Issue $issueObject = null): Issue
@@ -45,6 +45,27 @@ class IssueService extends YandexTrackerClient
         return $issue = $this->json_mapper->map(
             json_decode($ret),
             $issueObject
+        );
+    }
+
+    /**
+     * Creates a new Issue.
+     *
+     * @param Issue $issue
+     *
+     * @return Issue
+     * @throws JsonMapper_Exception
+     */
+    public function createProject(Issue $issue): Issue
+    {
+        // TODO: check for required params: summary & queue
+        $data = json_encode($issue);
+
+        $ret = $this->exec($this->uri, $data, 'POST');
+
+        return $this->json_mapper->map(
+            json_decode($ret),
+            new Issue()
         );
     }
 
