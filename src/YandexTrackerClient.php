@@ -72,7 +72,7 @@ class YandexTrackerClient
      */
     public function exec(string $context, array|string $post_data = null, string $custom_request = null): string|bool
     {
-        $response = $this->guzzle->request('GET', $context, [
+        $response = $this->guzzle->request('GET', $this->api_uri . $context, [
             'headers' => [
                 'Authorization'     => $this->configuration->getOAuthAccessToken(),
                 'X-Org-ID'      => $this->configuration->getCompanyId(),
