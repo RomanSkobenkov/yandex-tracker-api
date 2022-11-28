@@ -78,7 +78,8 @@ class YandexTrackerClient
             'headers' => [
                 'Authorization'     => $this->configuration->getOAuthAccessToken(),
                 'X-Org-ID'      => $this->configuration->getCompanyId(),
-            ]
+            ],
+            'form_params' => $post_data
         ]);
 
         return $response->getBody()->getContents();
