@@ -56,7 +56,7 @@ class IssueService extends YandexTrackerClient
      * @return Issue
      * @throws JsonMapper_Exception
      */
-    public function createProject(Issue $issue): Issue
+    public function createIssue(Issue $issue): Issue
     {
         // TODO: check for required params: summary & queue
         $data = json_encode($issue);
