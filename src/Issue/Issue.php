@@ -81,192 +81,240 @@ class Issue implements \JsonSerializable
     /**
      * @param string $self
      */
-    public function setSelf(string $self): void
+    public function setSelf(string $self): static
     {
         $this->self = $self;
+
+        return $this;
     }
 
     /**
      * @param string $id
      */
-    public function setId(string $id): void
+    public function setId(string $id): static
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
      * @param string $key
      */
-    public function setKey(string $key): void
+    public function setKey(string $key): static
     {
         $this->key = $key;
+
+        return $this;
     }
 
     /**
      * @param int $version
      */
-    public function setVersion(int $version): void
+    public function setVersion(int $version): static
     {
         $this->version = $version;
+
+        return $this;
     }
 
     /**
      * @param string|null $lastCommentUpdatedAt
      */
-    public function setLastCommentUpdatedAt(?string $lastCommentUpdatedAt): void
+    public function setLastCommentUpdatedAt(?string $lastCommentUpdatedAt): static
     {
         $this->lastCommentUpdatedAt = $lastCommentUpdatedAt;
+
+        return $this;
     }
 
     /**
      * @param string $summary
      */
-    public function setSummary(string $summary): void
+    public function setSummary(string $summary): static
     {
         $this->summary = $summary;
+
+        return $this;
     }
 
     /**
      * @param object|null $parent
      */
-    public function setParent(?object $parent): void
+    public function setParent(?object $parent): static
     {
         $this->parent = $parent;
+
+        return $this;
     }
 
     /**
      * @param array|null $aliases
      */
-    public function setAliases(?array $aliases): void
+    public function setAliases(?array $aliases): static
     {
         $this->aliases = $aliases;
+
+        return $this;
     }
 
     /**
      * @param object|null $updatedBy
      */
-    public function setUpdatedBy(?object $updatedBy): void
+    public function setUpdatedBy(?object $updatedBy): static
     {
         $this->updatedBy = $updatedBy;
+
+        return $this;
     }
 
     /**
      * @param string|null $description
      */
-    public function setDescription(?string $description): void
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
      * @param array|null $sprint
      */
-    public function setSprint(?array $sprint): void
+    public function setSprint(?array $sprint): static
     {
         $this->sprint = $sprint;
+
+        return $this;
     }
 
     /**
      * @param object $type
      */
-    public function setType(object $type): void
+    public function setType(object $type): static
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
      * @param object $priority
      */
-    public function setPriority(object $priority): void
+    public function setPriority(object $priority): static
     {
         $this->priority = $priority;
+
+        return $this;
     }
 
     /**
      * @param string $createdAt
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
     }
 
     /**
      * @param object|null $followers
      */
-    public function setFollowers(?object $followers): void
+    public function setFollowers(?object $followers): static
     {
         $this->followers = $followers;
+
+        return $this;
     }
 
     /**
      * @param object $createdBy
      */
-    public function setCreatedBy(object $createdBy): void
+    public function setCreatedBy(object $createdBy): static
     {
         $this->createdBy = $createdBy;
+
+        return $this;
     }
 
     /**
      * @param int $votes
      */
-    public function setVotes(int $votes): void
+    public function setVotes(int $votes): static
     {
         $this->votes = $votes;
+
+        return $this;
     }
 
     /**
      * @param object|null $assignee
      */
-    public function setAssignee(?object $assignee): void
+    public function setAssignee(?object $assignee): static
     {
         $this->assignee = $assignee;
+
+        return $this;
     }
 
     /**
      * @param object $queue
      */
-    public function setQueue(object $queue): void
+    public function setQueue(object $queue): static
     {
         $this->queue = $queue;
+
+        return $this;
     }
 
     /**
      * @param string $updatedAt
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 
     /**
      * @param object $status
      */
-    public function setStatus(object $status): void
+    public function setStatus(object $status): static
     {
         $this->status = $status;
+
+        return $this;
     }
 
     /**
      * @param object $previousStatus
      */
-    public function setPreviousStatus(object $previousStatus): void
+    public function setPreviousStatus(object $previousStatus): static
     {
         $this->previousStatus = $previousStatus;
+
+        return $this;
     }
 
     /**
      * @param string $statusStartTime
      */
-    public function setStatusStartTime(string $statusStartTime): void
+    public function setStatusStartTime(string $statusStartTime): static
     {
         $this->statusStartTime = $statusStartTime;
+
+        return $this;
     }
 
     /**
      * @param bool $favorite
      */
-    public function setFavorite(bool $favorite): void
+    public function setFavorite(bool $favorite): static
     {
         $this->favorite = $favorite;
+
+        return $this;
     }
 }
