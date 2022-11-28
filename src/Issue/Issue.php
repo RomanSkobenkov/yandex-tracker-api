@@ -40,7 +40,7 @@ class Issue implements \JsonSerializable
 
     public ?object $assignee;
 
-    public object $queue;
+    public object|string|int $queue;
 
     public string $updatedAt;
 
@@ -259,9 +259,9 @@ class Issue implements \JsonSerializable
     }
 
     /**
-     * @param object $queue
+     * @param int|object|string $queue
      */
-    public function setQueue(object $queue): static
+    public function setQueue(object|int|string $queue): static
     {
         $this->queue = $queue;
 
