@@ -12,37 +12,49 @@ class Issue implements \JsonSerializable
 
     public int $version;
 
+    public ?string $lastCommentUpdatedAt;
+
     public string $summary;
 
-    public string $statusStartTime;
+    public ?object $parent;
 
-    public ?array $updatedBy;
+    public ?array $aliases;
+
+    public ?object $updatedBy;
 
     public ?string $description;
 
-    public array $type;
+    public ?array $sprint;
 
-    public array $priority;
+    public object $type;
+
+    public object $priority;
 
     public string $createdAt;
 
-    public string $updatedAt;
+    public ?object $followers;
 
-    public array $createdBy;
-
-    public int $commentWithoutExternalMessageCount;
-
-    public int $commentWithExternalMessageCount;
+    public object $createdBy;
 
     public int $votes;
 
+    public ?object $assignee;
+
     public object $queue;
+
+    public string $updatedAt;
 
     public object $status;
 
     public object $previousStatus;
 
+    public string $statusStartTime;
+
     public bool $favorite;
+
+    /*public int $commentWithoutExternalMessageCount;
+
+    public int $commentWithExternalMessageCount;*/
 
     /*public IssueField $fields;
 
