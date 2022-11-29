@@ -3,6 +3,7 @@
 namespace YandexTrackerApi\YandexTrackerApi\Issue;
 
 use ArrayObject;
+use GuzzleHttp\Exception\GuzzleException;
 use JsonMapper_Exception;
 use YandexTrackerApi\YandexTrackerApi\YandexTrackerClient;
 
@@ -62,6 +63,30 @@ class IssueService extends YandexTrackerClient
         $data = json_encode($issue);
 
         $ret = $this->exec($this->uri, $data, 'POST');
+
+        return $this->json_mapper->map(
+            json_decode($ret),
+            new Issue()
+        );
+    }
+
+    /**
+     * Updates Issue.
+     *
+     * @param string $issueKey
+     * @param Issue $issue
+     *
+     * @return Issue
+     * @throws JsonMapper_Exception
+     * @throws GuzzleException
+     */
+    public function updateIssue(string $issueKey, Issue $issue): Issue
+    {
+        // TODO: PATCH Issue parent
+        // TODO: check for required $issueKey
+        $data = json_encode($issue);
+
+        $ret = $this->exec($this->uri.'/'.$issueKey, $data, 'PATCH');
 
         return $this->json_mapper->map(
             json_decode($ret),
