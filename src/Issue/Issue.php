@@ -72,12 +72,6 @@ class Issue implements \JsonSerializable
 
     public ?ChangeLog $changelog;*/
 
-    #[\ReturnTypeWillChange]
-    public function jsonSerialize()
-    {
-        return array_filter(get_object_vars($this));
-    }
-
     /**
      * @param string $self
      */
@@ -316,5 +310,11 @@ class Issue implements \JsonSerializable
         $this->favorite = $favorite;
 
         return $this;
+    }
+
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize()
+    {
+        return array_filter(get_object_vars($this));
     }
 }

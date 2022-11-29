@@ -60,7 +60,7 @@ class IssueService extends YandexTrackerClient
     public function createIssue(Issue $issue): Issue
     {
         // TODO: check for required params: summary & queue
-        $data = json_encode($issue);
+        $data = get_object_vars($issue);
 
         $ret = $this->exec($this->uri, $data, 'POST');
 
@@ -84,7 +84,7 @@ class IssueService extends YandexTrackerClient
     {
         // TODO: PATCH Issue parent
         // TODO: check for required $issueKey
-        $data = json_encode($issue);
+        $data = get_object_vars($issue);
 
         $ret = $this->exec($this->uri.'/'.$issueKey, $data, 'PATCH');
 
