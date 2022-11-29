@@ -53,16 +53,16 @@ class IssueService extends YandexTrackerClient
      *
      * @return Issue
      */
-    public function createIssue(Issue $issue): Issue
+    public function createIssue(Issue $issueObject): Issue
     {
         // TODO: check for required params: summary & queue
-        $data = get_object_vars($issue);
+        $data = get_object_vars($issueObject);
 
         $ret = $this->exec($this->uri, $data, 'POST');
 
         return $this->json_mapper->mapObject(
             json_decode($ret),
-            new Issue()
+            $issueObject
         );
     }
 
@@ -75,17 +75,17 @@ class IssueService extends YandexTrackerClient
      * @return Issue
      * @throws GuzzleException
      */
-    public function updateIssue(string $issueKey, Issue $issue): Issue
+    public function updateIssue(string $issueKey, Issue $issueObject): Issue
     {
         // TODO: PATCH Issue parent
         // TODO: check for required $issueKey
-        $data = get_object_vars($issue);
+        $data = get_object_vars($issueObject);
 
         $ret = $this->exec($this->uri.'/'.$issueKey, $data, 'PATCH');
 
         return $this->json_mapper->mapObject(
             json_decode($ret),
-            new Issue()
+            $issueObject
         );
     }
 
