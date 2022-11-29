@@ -13,7 +13,7 @@ class YandexTrackerClient
     /**
      * Json Mapper.
      */
-    protected \JsonMapper $json_mapper;
+    protected \JsonMapper\JsonMapperInterface $json_mapper;
 
     /**
      * Yandex Tracker REST API URI.
@@ -52,7 +52,7 @@ class YandexTrackerClient
             $this->configuration = $configuration;
         }
 
-        $this->json_mapper = new \JsonMapper();
+        $this->json_mapper = (new \JsonMapper\JsonMapperFactory())->default();
 
         // TODO: logger бы завести
 

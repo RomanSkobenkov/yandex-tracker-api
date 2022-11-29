@@ -4,7 +4,6 @@ namespace YandexTrackerApi\YandexTrackerApi\Issue;
 
 use ArrayObject;
 use GuzzleHttp\Exception\GuzzleException;
-use JsonMapper_Exception;
 use YandexTrackerApi\YandexTrackerApi\YandexTrackerClient;
 
 class IssueService extends YandexTrackerClient
@@ -15,12 +14,11 @@ class IssueService extends YandexTrackerClient
      * @param object $json
      *
      * @return Issue
-     *@throws JsonMapper_Exception
      *
      */
     public function getIssueFromJSON(object $json): Issue
     {
-        return $this->json_mapper->map(
+        return $this->json_mapper->mapObject(
             $json,
             new Issue()
         );
@@ -34,7 +32,6 @@ class IssueService extends YandexTrackerClient
      * @param Issue|null $issueObject
      *
      * @return Issue
-     * @throws JsonMapper_Exception
      *
      */
     public function get(int|string $issueIdOrKey, array $paramArray = [], Issue $issueObject = null): Issue
@@ -43,7 +40,7 @@ class IssueService extends YandexTrackerClient
 
         $ret = $this->exec($this->uri.'/'.$issueIdOrKey.$this->toHttpQueryParameter($paramArray), null);
 
-        return $issue = $this->json_mapper->map(
+        return $issue = $this->json_mapper->mapObject(
             json_decode($ret),
             $issueObject
         );
@@ -55,7 +52,6 @@ class IssueService extends YandexTrackerClient
      * @param Issue $issue
      *
      * @return Issue
-     * @throws JsonMapper_Exception
      */
     public function createIssue(Issue $issue): Issue
     {
@@ -64,7 +60,7 @@ class IssueService extends YandexTrackerClient
 
         $ret = $this->exec($this->uri, $data, 'POST');
 
-        return $this->json_mapper->map(
+        return $this->json_mapper->mapObject(
             json_decode($ret),
             new Issue()
         );
@@ -77,7 +73,6 @@ class IssueService extends YandexTrackerClient
      * @param Issue $issue
      *
      * @return Issue
-     * @throws JsonMapper_Exception
      * @throws GuzzleException
      */
     public function updateIssue(string $issueKey, Issue $issue): Issue
@@ -88,7 +83,7 @@ class IssueService extends YandexTrackerClient
 
         $ret = $this->exec($this->uri.'/'.$issueKey, $data, 'PATCH');
 
-        return $this->json_mapper->map(
+        return $this->json_mapper->mapObject(
             json_decode($ret),
             new Issue()
         );
