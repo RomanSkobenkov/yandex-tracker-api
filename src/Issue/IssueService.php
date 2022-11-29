@@ -28,11 +28,12 @@ class IssueService extends YandexTrackerClient
      *  get all Issue list.
      *
      * @param int|string $issueIdOrKey
-     * @param array $paramArray   Query Parameter key-value Array.
+     * @param array $paramArray Query Parameter key-value Array.
      * @param Issue|null $issueObject
      *
      * @return Issue
      *
+     * @throws GuzzleException
      */
     public function get(int|string $issueIdOrKey, array $paramArray = [], Issue $issueObject = null): Issue
     {
@@ -49,9 +50,10 @@ class IssueService extends YandexTrackerClient
     /**
      * Creates a new Issue.
      *
-     * @param Issue $issue
+     * @param Issue $issueObject
      *
      * @return Issue
+     * @throws GuzzleException
      */
     public function createIssue(Issue $issueObject): Issue
     {
@@ -70,7 +72,7 @@ class IssueService extends YandexTrackerClient
      * Updates Issue.
      *
      * @param string $issueKey
-     * @param Issue $issue
+     * @param Issue $issueObject
      *
      * @return Issue
      * @throws GuzzleException
