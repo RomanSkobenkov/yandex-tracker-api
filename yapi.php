@@ -2,7 +2,7 @@
 require 'vendor/autoload.php';
 
 use YandexTrackerApi\YandexTrackerApi\Issue\IssueService;
-//  qwqw
+
 /* Получили задачку*/
 $issueService = new IssueService();
 $queryParam = [];
