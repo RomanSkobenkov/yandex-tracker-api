@@ -103,7 +103,19 @@ class IssueService extends YandexTrackerClient
     {
         $ret = $this->exec($this->uri.'/'.$issueKey.'/changelog');
 
-        return json_decode($ret);
+        $fullChangeLog = [];
+
+        /*foreach (json_decode($ret) as $changeLog) {
+            var_dump($changeLog);
+        }*/
+        foreach (json_decode($ret) as $changeLog) {
+            $fullChangeLog[] = $this->json_mapper->mapObject(
+                $changeLog,
+                new ChangeLog()
+            );
+        }
+
+        return $fullChangeLog;
     }
 
 }

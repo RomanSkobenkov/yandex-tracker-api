@@ -9,6 +9,21 @@ namespace YandexTrackerApi\YandexTrackerApi\Issue;
  */
 class ChangeLog implements \JsonSerializable
 {
+    public string $self;
+
+    public string $id;
+
+    public string $updatedAt;
+
+    public string $type;
+
+    public string $transport;
+
+    public Issue $issue;
+
+    public array $updatedBy;
+
+    public array $fields;
 
     #[\ReturnTypeWillChange]
     public function jsonSerialize()

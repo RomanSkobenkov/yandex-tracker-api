@@ -16,6 +16,8 @@ class Issue implements \JsonSerializable
 
     public string $summary;
 
+    public string $display;
+
     public string $statusStartTime;
 
     public array $parent;
