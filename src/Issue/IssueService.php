@@ -91,4 +91,19 @@ class IssueService extends YandexTrackerClient
         );
     }
 
+    /**
+     * get Issue Changelog
+     *
+     * @param string $issueKey
+     *
+     * @return Issue
+     * @throws GuzzleException
+     */
+    public function getChangeLog(string $issueKey): array
+    {
+        $ret = $this->exec($this->uri.'/'.$issueKey.'/changelog');
+
+        return json_decode($ret);
+    }
+
 }

@@ -9,17 +9,6 @@ namespace YandexTrackerApi\YandexTrackerApi\Issue;
  */
 class ChangeLog implements \JsonSerializable
 {
-    /** @var int */
-    public $startAt;
-
-    /** @var int */
-    public $maxResults;
-
-    /** @var int */
-    public $total;
-
-    /** @var \JiraCloud\Issue\History[]|null */
-    public $histories;
 
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
