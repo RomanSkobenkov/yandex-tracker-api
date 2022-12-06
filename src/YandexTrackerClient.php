@@ -52,7 +52,7 @@ class YandexTrackerClient
             $this->configuration = $configuration;
         }
 
-        $this->json_mapper = (new \JsonMapper\JsonMapperFactory())->default();
+        $this->json_mapper = (new \JsonMapper\JsonMapperFactory())->bestFit();
 
         // TODO: logger бы завести
 

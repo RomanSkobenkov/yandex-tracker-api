@@ -16,41 +16,45 @@ class Issue implements \JsonSerializable
 
     public string $summary;
 
-    public ?object $parent;
+    public string $statusStartTime;
+
+    public array $parent;
 
     public ?array $aliases;
 
-    public ?object $updatedBy;
+    public array $updatedBy;
 
     public ?string $description;
 
     public ?array $sprint;
 
-    public object $type;
+    public array $type;
 
-    public object $priority;
+    public array $priority;
 
     public string $createdAt;
 
-    public ?object $followers;
+    public ?array $followers;
 
-    public object $createdBy;
+    public array $createdBy;
 
     public int $votes;
 
-    public ?object $assignee;
+    public array $assignee;
 
-    public object|string|int $queue;
+    public array $queue;
 
     public string $updatedAt;
 
-    public object $status;
+    public array $status;
 
-    public object $previousStatus;
-
-    public string $statusStartTime;
+    public array $previousStatus;
 
     public bool $favorite;
+
+    public int $commentWithoutExternalMessageCount;
+
+    public int $commentWithExternalMessageCount;
 
     /*public int $commentWithoutExternalMessageCount;
 
