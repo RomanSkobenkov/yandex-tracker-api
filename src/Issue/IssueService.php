@@ -118,6 +118,12 @@ class IssueService extends YandexTrackerClient
         return $fullChangeLog;
     }
 
+    /**
+     * @param Comment $commentObject
+     * @param string $issueKey
+     * @return Comment
+     * @throws GuzzleException
+     */
     public function createComment(Comment $commentObject, string $issueKey): Comment
     {
         $data = get_object_vars($commentObject);
@@ -128,6 +134,25 @@ class IssueService extends YandexTrackerClient
             json_decode($ret),
             $commentObject
         );
+    }
+
+    public function getComments(string $issueKey): array
+    {
+        $ret = $this->exec($this->uri.'/'.$issueKey.'/comments');
+
+        $allComments = [];
+
+        /*foreach (json_decode($ret) as $changeLog) {
+            var_dump($changeLog);
+        }*/
+        foreach (json_decode($ret) as $comment) {
+            $allComments[] = $this->json_mapper->mapObject(
+                $comment,
+                new Comment()
+            );
+        }
+
+        return $allComments;
     }
 
 }

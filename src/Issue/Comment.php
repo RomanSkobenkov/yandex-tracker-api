@@ -21,6 +21,10 @@ class Comment implements \JsonSerializable
 
     public ?array $updateBody;
 
+    public ?array $createdBy;
+
+    public ?array $updatedBy;
+
     public ?array $summonees;
 
     public ?array $maillistSummonees;
