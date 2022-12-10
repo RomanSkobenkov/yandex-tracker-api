@@ -3,6 +3,7 @@ ini_set('xdebug.var_display_max_depth', '10');
 require 'vendor/autoload.php';
 
 use YandexTrackerApi\YandexTrackerApi\Issue\IssueService;
+use YandexTrackerApi\YandexTrackerApi\Queue\QueueService;
 
 /* Получили задачку*/
 /*$issueService = new IssueService();
@@ -53,9 +54,13 @@ $comments = $issueService->getComments('ORG-1');*/
 /*$comment = new \YandexTrackerApi\YandexTrackerApi\Issue\Comment();
 $comment->setText('11 <b>WWWWWWWWWWRRRRRRRRRRAAAAAAAAAAA</b> A A A UpdatedMazfuckr');*/
 
-$issueService = new IssueService();
+/*$issueService = new IssueService();
 $issueService->deleteComment('ORG-1', '638e850f43851219144d6734');
-echo 111;
-/*echo '<pre>';
-var_dump($comments);
-echo '</pre>';*/
+echo 111;*/
+/* Получили задачку*/
+$queueService = new QueueService();
+$queryParam = [];
+$queue = $queueService->get('ORG', $queryParam);
+echo '<pre>';
+var_dump($queue);
+echo '</pre>';
