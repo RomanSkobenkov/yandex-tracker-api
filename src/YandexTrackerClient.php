@@ -4,6 +4,8 @@ namespace YandexTrackerApi\YandexTrackerApi;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 use YandexTrackerApi\YandexTrackerApi\Configuration\ConfigurationInterface;
 use YandexTrackerApi\YandexTrackerApi\Configuration\DotEnvConfiguration;
@@ -54,7 +56,18 @@ class YandexTrackerClient
 
         $this->json_mapper = (new \JsonMapper\JsonMapperFactory())->bestFit();
 
-        // TODO: logger бы завести
+        // create logger
+        if ($this->configuration->getYandexTrackerLogEnabled()) {
+            if ($logger) {
+                $this->log = $logger;
+            } else {
+                $this->log = new Logger('YandexTrackerClient');
+                $this->log->pushHandler(new StreamHandler(
+                    $this->configuration->getYandexTrackerLogFile(),
+                    $this->configuration->getYandexTrackerLogLevel()
+                ));
+            }
+        }
 
         // TODO: Guzzle prepare
         $this->guzzle = new GuzzleClient(['base_uri' => $this->api_uri]);
@@ -74,6 +87,12 @@ class YandexTrackerClient
      */
     public function exec(string $context, array|string $post_data = null, string $method = 'GET'): string|bool
     {
+        if (is_string($post_data)) {
+            $this->log->info("Request $method: $context JsonData=".$post_data);
+        } elseif (is_array($post_data)) {
+            $this->log->info("Request $method: $context JsonData=".json_encode($post_data, JSON_UNESCAPED_UNICODE));
+        }
+
         $response = $this->guzzle->request($method, $this->api_uri . $context, [
             'headers' => [
                 'Authorization'     => $this->configuration->getOAuthAccessToken(),
@@ -81,6 +100,10 @@ class YandexTrackerClient
             ],
             'json' => $post_data
         ]);
+
+        /*if ($response->getStatusCode() != 200 && $response->getStatusCode() != 201) {
+
+        }*/
 
         return $response->getBody()->getContents();
     }

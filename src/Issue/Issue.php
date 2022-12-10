@@ -44,7 +44,7 @@ class Issue implements \JsonSerializable
 
     public array $assignee;
 
-    public array $queue;
+    public array|string $queue;
 
     public string $updatedAt;
 

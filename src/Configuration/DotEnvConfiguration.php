@@ -13,6 +13,9 @@ class DotEnvConfiguration extends AbstractConfiguration
 
         $this->oauthAccessToken = 'OAuth ' . $this->env('YANDEX_TRACKER_OAUTH');
         $this->companyId = $this->env('YANDEX_TRACKER_COMPANY_ID');
+        $this->yandexTrackerLogEnabled = $this->env('YANDEX_TRACKER_LOG_ENABLED', true);
+        $this->yandexTrackerLogFile = $this->env('YANDEX_TRACKER_LOG_FILE', 'yandex-tracker-log.log');
+        $this->yandexTrackerLogLevel = $this->env('YANDEX_TRACKER_LOG_LEVEL', 'WARNING');
     }
 
     /**
