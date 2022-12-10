@@ -136,6 +136,31 @@ class IssueService extends YandexTrackerClient
         );
     }
 
+
+    /**
+     * @param Comment $commentObject
+     * @param string $issueKey
+     * @param int $commentId
+     * @return Comment
+     * @throws GuzzleException
+     */
+    public function updateComment(Comment $commentObject, string $issueKey, int $commentId): Comment
+    {
+        $data = get_object_vars($commentObject);
+
+        $ret = $this->exec($this->uri.'/'.$issueKey.'/comments/'.$commentId, $data, 'PATCH');
+
+        return $this->json_mapper->mapObject(
+            json_decode($ret),
+            $commentObject
+        );
+    }
+
+    /**
+     * @param string $issueKey
+     * @return array
+     * @throws GuzzleException
+     */
     public function getComments(string $issueKey): array
     {
         $ret = $this->exec($this->uri.'/'.$issueKey.'/comments');

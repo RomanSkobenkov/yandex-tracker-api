@@ -47,9 +47,14 @@ $comment->setText('11 <b>WWWWWWWWWWRRRRRRRRRRAAAAAAAAAAA</b> A A A');
 $issueService = new IssueService();
 $comment = $issueService->createComment($comment, 'ORG-1');*/
 
-$issueService = new IssueService();
-$comments = $issueService->getComments('ORG-1');
+/*$issueService = new IssueService();
+$comments = $issueService->getComments('ORG-1');*/
 
+$comment = new \YandexTrackerApi\YandexTrackerApi\Issue\Comment();
+$comment->setText('11 <b>WWWWWWWWWWRRRRRRRRRRAAAAAAAAAAA</b> A A A UpdatedMazfuckr');
+
+$issueService = new IssueService();
+$comment = $issueService->updateComment($comment, 'ORG-1', 1);
 echo '<pre>';
-var_dump($comments);
+var_dump($comment);
 echo '</pre>';
