@@ -21,8 +21,9 @@ composer require yandex-tracker-api/yandex-tracker-api
 require 'vendor/autoload.php';
 
 use YandexTrackerApi\YandexTrackerApi\Issue\IssueService;
+use YandexTrackerApi\YandexTrackerApi\Issue\Issue;
 
-$issue = new \YandexTrackerApi\YandexTrackerApi\Issue\Issue();
+$issue = new Issue();
 
 $issue->setQueue('Intensa')->setSummary('One love');
 
