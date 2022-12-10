@@ -96,7 +96,7 @@ class IssueService extends YandexTrackerClient
      *
      * @param string $issueKey
      *
-     * @return Issue
+     * @return array
      * @throws GuzzleException
      */
     public function getChangeLog(string $issueKey): array
