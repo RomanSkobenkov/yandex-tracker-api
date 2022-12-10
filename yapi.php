@@ -50,11 +50,12 @@ $comment = $issueService->createComment($comment, 'ORG-1');*/
 /*$issueService = new IssueService();
 $comments = $issueService->getComments('ORG-1');*/
 
-$comment = new \YandexTrackerApi\YandexTrackerApi\Issue\Comment();
-$comment->setText('11 <b>WWWWWWWWWWRRRRRRRRRRAAAAAAAAAAA</b> A A A UpdatedMazfuckr');
+/*$comment = new \YandexTrackerApi\YandexTrackerApi\Issue\Comment();
+$comment->setText('11 <b>WWWWWWWWWWRRRRRRRRRRAAAAAAAAAAA</b> A A A UpdatedMazfuckr');*/
 
 $issueService = new IssueService();
-$comment = $issueService->updateComment($comment, 'ORG-1', 1);
-echo '<pre>';
-var_dump($comment);
-echo '</pre>';
+$issueService->deleteComment('ORG-1', '638e850f43851219144d6734');
+echo 111;
+/*echo '<pre>';
+var_dump($comments);
+echo '</pre>';*/

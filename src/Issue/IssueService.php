@@ -105,9 +105,6 @@ class IssueService extends YandexTrackerClient
 
         $fullChangeLog = [];
 
-        /*foreach (json_decode($ret) as $changeLog) {
-            var_dump($changeLog);
-        }*/
         foreach (json_decode($ret) as $changeLog) {
             $fullChangeLog[] = $this->json_mapper->mapObject(
                 $changeLog,
@@ -140,11 +137,11 @@ class IssueService extends YandexTrackerClient
     /**
      * @param Comment $commentObject
      * @param string $issueKey
-     * @param int $commentId
+     * @param string $commentId
      * @return Comment
      * @throws GuzzleException
      */
-    public function updateComment(Comment $commentObject, string $issueKey, int $commentId): Comment
+    public function updateComment(Comment $commentObject, string $issueKey, string $commentId): Comment
     {
         $data = get_object_vars($commentObject);
 
@@ -158,6 +155,17 @@ class IssueService extends YandexTrackerClient
 
     /**
      * @param string $issueKey
+     * @param string $commentId
+     * @return void
+     * @throws GuzzleException
+     */
+    public function deleteComment(string $issueKey, string $commentId): void
+    {
+        $this->exec($this->uri.'/'.$issueKey.'/comments/'.$commentId, null, 'DELETE');
+    }
+
+    /**
+     * @param string $issueKey
      * @return array
      * @throws GuzzleException
      */
@@ -167,9 +175,6 @@ class IssueService extends YandexTrackerClient
 
         $allComments = [];
 
-        /*foreach (json_decode($ret) as $changeLog) {
-            var_dump($changeLog);
-        }*/
         foreach (json_decode($ret) as $comment) {
             $allComments[] = $this->json_mapper->mapObject(
                 $comment,
