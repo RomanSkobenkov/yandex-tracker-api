@@ -118,4 +118,16 @@ class IssueService extends YandexTrackerClient
         return $fullChangeLog;
     }
 
+    public function createComment(Comment $commentObject, string $issueKey): Comment
+    {
+        $data = get_object_vars($commentObject);
+
+        $ret = $this->exec($this->uri.'/'.$issueKey.'/comments', $data, 'POST');
+
+        return $this->json_mapper->mapObject(
+            json_decode($ret),
+            $commentObject
+        );
+    }
+
 }

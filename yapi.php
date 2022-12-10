@@ -37,10 +37,16 @@ $issueService = new IssueService();
 $queryParam = [];
 $issue2 = $issueService->get('ORG-1', $queryParam, $issue);*/
 
+/*
+$issueService = new IssueService();
+$chengelog = $issueService->getChangeLog('ORG-1');*/
+
+$comment = new \YandexTrackerApi\YandexTrackerApi\Issue\Comment();
+$comment->setText('11 <b>WWWWWWWWWWRRRRRRRRRRAAAAAAAAAAA</b> A A A');
 
 $issueService = new IssueService();
-$chengelog = $issueService->getChangeLog('ORG-1');
+$comment = $issueService->createComment($comment, 'ORG-1');
 
 echo '<pre>';
-var_dump($chengelog);
+var_dump($comment);
 echo '</pre>';
