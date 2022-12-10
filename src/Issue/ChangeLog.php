@@ -21,7 +21,7 @@ class ChangeLog implements \JsonSerializable
 
     public Issue $issue;
 
-    public array $updatedBy;
+    public UpdatedBy $updatedBy;
 
     public array $fields;
 

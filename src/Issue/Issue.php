@@ -58,26 +58,6 @@ class Issue implements \JsonSerializable
 
     public int $commentWithExternalMessageCount;
 
-    /*public int $commentWithoutExternalMessageCount;
-
-    public int $commentWithExternalMessageCount;*/
-
-    /*public IssueField $fields;
-
-    public ?array $renderedFields;
-
-    public ?array $names;
-
-    public ?array $schema;
-
-    public ?array $transitions;
-
-    public ?array $operations;
-
-    public ?array $editmeta;
-
-    public ?ChangeLog $changelog;*/
-
     /**
      * @param string $self
      */

@@ -9,13 +9,19 @@ use YandexTrackerApi\YandexTrackerApi\Issue\IssueService;
 $queryParam = [];
 $issue = $issueService->get('ORG-1', $queryParam);*/
 /* Создали задачку */
+/*$issue = new \YandexTrackerApi\YandexTrackerApi\Issue\Issue();
+
 $issue = new \YandexTrackerApi\YandexTrackerApi\Issue\Issue();
 
-$issue->setSummary('Logger')->setQueue('ORG');
+$issue->setQueue('Intensa')->setSummary('One love');
 
 $issueService = new IssueService();
 
-$issue = $issueService->createIssue($issue);
+try {
+    $issue = $issueService->createIssue($issue);
+} catch (\GuzzleHttp\Exception\GuzzleException $e) {
+    print('Ошибочка! ' . $e->getMessage());
+}*/
 
 /*
 $issue = new \YandexTrackerApi\YandexTrackerApi\Issue\Issue();
@@ -30,9 +36,11 @@ $issue = $issueService->updateIssue('ORG-7', $issue);*/
 $issueService = new IssueService();
 $queryParam = [];
 $issue2 = $issueService->get('ORG-1', $queryParam, $issue);*/
-/*$issueService = new IssueService();
-$chengelog = $issueService->getChangeLog('ORG-1');*/
+
+
+$issueService = new IssueService();
+$chengelog = $issueService->getChangeLog('ORG-1');
 
 echo '<pre>';
-var_dump($issue);
+var_dump($chengelog);
 echo '</pre>';
